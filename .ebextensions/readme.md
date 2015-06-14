@@ -9,3 +9,4 @@ They are processed in alphabetical order.
 - **003-files.config** writes configuration and script files required before the application is installed.
 - **004-mount-ebs.config** creates and attaches EBS volumes for MongoDB and user-uploaded files and updates /etc/fstab.
 - **005-services.config** configures MongoDB to run and both MongoDB and Nginx to restart if their configuration is updated and configures the firewall.
+- **006-monitoring.config** installs and configures the Amazon CloudWatch Monitoring Scripts for Linux.
