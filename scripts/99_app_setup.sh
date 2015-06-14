@@ -16,6 +16,8 @@ wget -O /var/app/current/settings/admins.js https://raw.githubusercontent.com/bi
 chown $EB_APP_USER:$EB_APP_USER /var/app/current/settings/admins.js
 wget -O /var/app/current/config.json https://raw.githubusercontent.com/binghamchris/App-Prescribed/master/config/config.json
 chown $EB_APP_USER:$EB_APP_USER /var/app/current/config.json
+# Mount the attachments volume
+mount /dev/xvdg $(EB_APP_CURRENT_DIR)/attachments
 
 # Start the application again
 su -s /bin/bash -c "cd $EB_APP_CURRENT_DIR; /opt/elasticbeanstalk/node-install/node-v0.10.26-linux-x64/bin/npm run-script upstart &" $EB_APP_USER
