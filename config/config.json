@@ -1,0 +1,38 @@
+{
+  "dev": false,
+  "offline": false,
+  "port": 8080,
+  "adminPort": 8088,
+  "url": "http://www.pilot.appprescribed.com",
+  "db": {
+    "name": "patient-check",
+    "host": "127.0.0.1",
+    "port": 27017
+  },
+  "mail": {
+    "host": "appprescribedcom.domain.com",
+    "port": "587",
+    "auth": {
+      "user": "xxx",
+      "pass": "xxx"
+    },
+    "secureConnection": false,
+    "ignoreTLS": true,
+    "maxConnections": 10,
+    "from": "AppPrecribed.com <no-reply@appprescribed.com>"
+  },
+  "mobile": {
+    "port": 8008,
+    "folderPath": ".\\public_mobile",
+    "url": "http://mobile.pilot.appprescribed.com/",
+    "jwtSecret": "xxx",
+    "componentsUrl": "http://mobile.pilot.appprescribed.com/preview/"
+  },
+  "conference": {
+    "port": 8888
+  },
+  "api": {
+    "port": 8808,
+    "url": "http://api.pilot.appprescribed.com"
+  }
+}
