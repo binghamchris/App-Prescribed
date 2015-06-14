@@ -10,7 +10,7 @@ su -s /bin/bash -c "cd $EB_APP_CURRENT_DIR; /opt/elasticbeanstalk/node-install/n
 
 #Configure the application
 # Run the setup script
-su -s /bin/bash -c "cd $EB_APP_CURRENT_DIR; /opt/elasticbeanstalk/node-install/node-v0.10.26-linux-x64/bin/npm run-script setup" $EB_APP_USER
+cd $EB_APP_CURRENT_DIR; /opt/elasticbeanstalk/node-install/node-v0.10.26-linux-x64/bin/npm run-script setup
 # Retrieve the configuration files from the Git repo
 wget -O /var/app/current/settings/admins.js https://raw.githubusercontent.com/binghamchris/App-Prescribed/master/config/admins.js
 chown $EB_APP_USER:$EB_APP_USER /var/app/current/settings/admins.js
