@@ -5,11 +5,16 @@ AppPrescribed Pilot AWS Solution Documentation
 Contents
 ========
 - `1.0 Introduction`_
+
   - `1.1 In Scope`_
   - `1.2 Out of Scope`_
+
 - `2.0 Solution Overview`_
+
   - `2.1 File Listing`_
+
 - `3.0 Usage`_
+
   - `3.1 Environment Deployment`_
   - `3.2 Environment Rebuild or Termination`_
   - `3.3 Code Updates`_
@@ -61,6 +66,7 @@ The following diagram shows an overview of the major components of the solution:
 2.1 File Listing
 ----------------
 - **.ebextensions** contains Elastic Beanstalk customisation files for including in the application zip file/tarball.
+
   - **000-beanstalk-options.config** sets general Elastic Beanstalk environment options.
   - **001-mongo-repo.config** installs an additional yum repository containing a version of MongoDB complied to work on Amazon Linux.
   - **002-packages.config** installs all additional packages needed for the application to run.
@@ -68,12 +74,16 @@ The following diagram shows an overview of the major components of the solution:
   - **004-mount-ebs.config** creates and attaches EBS volumes for MongoDB and user-uploaded files and updates /etc/fstab.
   - **005-services.config** configures MongoDB to run and both MongoDB and Nginx to restart if their configuration is updated and configures the firewall.
   - **006-monitoring.config** installs and configures the Amazon CloudWatch Monitoring Scripts for Linux.
+
 - **config** contains sample configuration files which are deployed into the Elastic Beanstalk environment.
+
   - **admin.js** configures the initial administer account in the application.
   - **authorized_keys** the public SSH keys to be granted access to the application's EC2 instances
   - **config.json** configures all general options in the application.
   - **pilot.appprescribed.com.conf** configures Nginx to act as a reverse proxy for the application's various interfaces.
+
 - **scripts** contains script files for deploying the application.
+
   - **15_umount_attachments.sh** is intended to be run inside an Elastic Beanstalk environment and unmounts the attachments EBS volume during the deployment of new version of the application.
   - **99_app_setup.sh** is intended to be run inside an Elastic Beanstalk environment and performs the final configuration steps prior to the application being started.
   - **ami-setup.sh** performs a scripted installation of the application intended to be run manually in a non-Elastic Beanstalk EC2 instance.
