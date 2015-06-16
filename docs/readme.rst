@@ -48,6 +48,7 @@ The solution deploys the application into an Elastic Beanstalk Node.js environme
 The EC2 instance is secured using a pre-configured security group and an IAM role. The security group is set up to allow direct access to the applications own ports when needed, and the IAM role allows the EC2 instance to publish new metrics to CloudWatch. This is used to enable monitoring of memory utilisation within the EC2 instance via the CloudWatch service.
 
 A Route53 hosted zone of "pilot.appprescribed.com" is used for all DNS records, with the following A records being configured to point to the Elastic IP of the Elastic Beanstalk environment:
+
 - www.pilot.appprescribed.com
 - admin.pilot.appprescribed.com
 - mobile.pilot.appprescribed.com
@@ -103,6 +104,7 @@ When launching a new Elastic Beanstalk environment the zip file containing the a
 - The .ebextensions directory from this repository should be included in the root of the zip file.
 
 Although the .ebextensions files will perform most of the configuration of the environment, the AWS console will ask for several options to be selected. When asked, select the following options:
+
 #. Web Server Environment: aws-elasticbeanstalk-ec2-role
 #. Predefined configuration: Node.js
 #. Environment type: Single instance
