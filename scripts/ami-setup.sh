@@ -1,5 +1,5 @@
 #!/bin/bash
-# Setup script for installing the application into an EC2 instance *outside* of Leastic Beanstalk
+# Setup script for installing the application into an EC2 instance *outside* of Elastic Beanstalk
 # Run as root
 # patient-check-mobile.zip must be manually uploaded to /home/ec2-user/patient-check-mobile.zip prior to running
 # Security sensitive data has been substituted with "xxx". Replace all occurrences  of "xxx" with appropriate values before running this script.

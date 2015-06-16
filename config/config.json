@@ -23,7 +23,7 @@
   },
   "mobile": {
     "port": 8008,
-    "folderPath": ".\\public_mobile",
+    "folderPath": "./public_mobile",
     "url": "http://mobile.pilot.appprescribed.com/",
     "jwtSecret": "xxx",
     "componentsUrl": "http://mobile.pilot.appprescribed.com/preview/"
