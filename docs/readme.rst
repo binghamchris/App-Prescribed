@@ -43,7 +43,7 @@ The purpose of the code in this repository is to enable Roche to deploy a pre-re
 
 2.0 Solution Overview
 =====================
-The solution deploys the application into an Elastic Beanstalk Node.js environment. The application code runs on an EC2 instance managed by Elastic Beanstalk, with data for MongoDB and the application's "attachments" directory stored on separate EBS volumes automatically generated from pre-configured snapshots.
+The solution deploys the application into an Elastic Beanstalk Node.js environment. The application code runs on an EC2 instance managed by Elastic Beanstalk, with data for MongoDB and the application's "attachments" and "settings" directories stored on separate EBS volumes automatically generated from pre-configured snapshots.
 
 The EC2 instance is secured using a pre-configured security group and an IAM role. The security group is set up to allow direct access to the applications own ports when needed, and the IAM role allows the EC2 instance to publish new metrics to CloudWatch. This is used to enable monitoring of memory utilisation within the EC2 instance via the CloudWatch service.
 
@@ -72,7 +72,7 @@ The following diagram shows an overview of the major components of the solution:
   - **001-mongo-repo.config** installs an additional yum repository containing a version of MongoDB complied to work on Amazon Linux.
   - **002-packages.config** installs all additional packages needed for the application to run.
   - **003-files.config** writes configuration and script files required before the application is installed.
-  - **004-mount-ebs.config** creates and attaches EBS volumes for MongoDB and user-uploaded files and updates /etc/fstab.
+  - **004-mount-ebs.config** creates and attaches EBS volumes for MongoDB, attachments, and settings files and updates /etc/fstab.
   - **005-services.config** configures MongoDB to run and both MongoDB and Nginx to restart if their configuration is updated and configures the firewall.
   - **006-monitoring.config** installs and configures the Amazon CloudWatch Monitoring Scripts for Linux.
 
@@ -85,7 +85,7 @@ The following diagram shows an overview of the major components of the solution:
 
 - **scripts** contains script files for deploying the application.
 
-  - **15_umount_attachments.sh** is intended to be run inside an Elastic Beanstalk environment and unmounts the attachments EBS volume during the deployment of new version of the application.
+  - **15_umount_volumes.sh** is intended to be run inside an Elastic Beanstalk environment and unmounts the attachments and settings EBS volumes during the deployment of new version of the application.
   - **99_app_setup.sh** is intended to be run inside an Elastic Beanstalk environment and performs the final configuration steps prior to the application being started.
   - **ami-setup.sh** performs a scripted installation of the application intended to be run manually in a non-Elastic Beanstalk EC2 instance.
 
@@ -121,7 +121,7 @@ All other options can be left as default.
   AWS documentation for terminating a Elastic Beanstalk environment can be found here: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.terminating.html
 
 Both rebuilding and terminating an environment are destructive operations, and as such any data stored by the application running in that environment **will be lost** when performing these operations.
-Application data which may need to be retained after these operations, specifically the MongoDB database and the "attachments" directory, are set up to be stored on EBS volumes to enable this data to be retained if required.
+Application data which may need to be retained after these operations, specifically the MongoDB database and the "attachments" & "settings" directories, are set up to be stored on EBS volumes to enable this data to be retained if required.
 If the data must be retained this can be accomplished by taking snapshots of the EBS volumes in AWS. The EBS volumes associated with the environment can be identified by examining the "Attachement Information" column in the EBS console.
 A full description of the process for snapshotting an EBS volume can be found in the AWS documentation here: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html
 
