@@ -100,6 +100,7 @@ This section provides a short overview of how the code in this repository should
   AWS documentation for launching a new Elastic Beanstalk environment can be found here: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.environments.html
 
 When launching a new Elastic Beanstalk environment the zip file containing the application code must be structured correctly. This means that;
+
 - The directory containing package.json should be the root of the zip file.
 - The .ebextensions directory from this repository should be included in the root of the zip file.
 
